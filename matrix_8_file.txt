@@ -1,0 +1,47 @@
+
+QST36
+def string_to_matrix(matrix_string):
+    """Converts a string into an integer matrix (list of rows)."""
+      matrix = list()
+    lines = matrix_string.strip().split('\n')
+    for line in lines:
+        row = [int(cell) for cell in line.split()]
+        matrix.append(row)
+    return matrix
+
+%%
+QST37
+def sorted_cell_list(matrix):
+    """Returns the list of matrix cells sorted by increasing value."""
+    cell_list = list()
+    for row in matrix:
+        for cell in row:
+            if cell not in cell_list:  
+                cell_list.append(cell)
+    cell_list.sort()  
+    return cell_list
+
+
+%%
+QST38
+def spiral_filled_matrix(integer_list):
+    """Returns a square matrix filled in a spiral manner."""
+    matrix = list()
+     n = int(len(integer_list) ** 0.5)
+    matrix = []
+    for i in range(0, len(integer_list), n):
+        matrix.append(integer_list[i:i + n])
+    return matrix
+
+
+%%
+QST 39 
+def matrix_to_string(matrix):
+    """Converts an integer matrix into multi-line formatted string.""" 
+    if not matrix:
+        return ""
+    max_length = max(len(str(cell)) for row in matrix for cell in row)
+    matrix_string = ""
+    for row in matrix:
+        matrix_string += " ".join(f"{cell:>{max_length}}" for cell in row) + "\n"
+    return matrix_string
